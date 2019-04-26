@@ -1,0 +1,263 @@
+html, body {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+}
+
+/* set box sizing options. this allows other box sizing if needed */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* hide menu bars on larger screens */
+.menu_container {
+  display: none;
+}
+
+/* logo styles */
+.logo {
+  width: 150px;
+  padding-left: 20px;
+}
+
+/* navbar styling */
+.navbar {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  border-bottom: 2px solid #d3d3d3;
+}
+
+/* style list items in navbar */
+.list {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+/* styles for navbar links */
+.links>a {
+  padding-right: 75px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #000;
+}
+
+/* hover styles for navbar links */
+.links>a:hover {
+  color: #00a8e2;
+  cursor: pointer;
+}
+
+section {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.left_panel {
+  width: 33%;
+  padding-left: 20px;
+  position: relative;
+}
+
+/* triangle at bottom of subnav section */
+.left_panel:after,
+.left_panel::after {
+  position: absolute;
+  top: 7%;
+  left: 70%;
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: solid 10px #d3d3d3;
+  border-left: solid 15px transparent;
+  border-right: solid 15px transparent;
+}
+
+.left_title {
+  margin: 0 20px 0 0;
+  text-transform: uppercase;
+  border-radius: 6px;
+  background: #d3d3d3;
+  padding: 10px 15px;
+}
+
+.right_panel {
+  width: 100%;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-bottom: 5px solid #eee;
+  padding-left: 20px;
+  margin-right: 20px;
+  position: relative;
+}
+
+/* triangle at bottom of related links section */
+.right_panel:after,
+.right_panel::after {
+  position: absolute;
+  top: 48.7%;
+  left: -11%;
+  margin-left: 5px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: solid 10px #d3d3d3;
+  border-left: solid 15px transparent;
+  border-right: solid 15px transparent;
+}
+
+.right_title {
+  margin: 0 20px 0 0;
+  color: #00a8e2;
+}
+
+.right_sub_title {
+  font-weight: bold;
+  font-style: italic;
+  margin: 5px 0 0 20px;
+}
+
+/* div containing images */
+.img_container {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 50px 0 20px 0;
+  position: relative;
+}
+
+/* image styling */
+.imgs {
+  width: 225px;
+  height: 175px;
+  border: 1px solid #00a8e2;
+  display: flex;
+  object-fit: cover;
+}
+
+/* cursor for image hover */
+.imgs:hover {
+  cursor: pointer;
+}
+
+/* custom bullet styling */
+.sub_list {
+  list-style-type: none;
+}
+
+.sub_list>li::before {
+  content: '\2022';
+  color: #00a8e2;
+  font-weight: bold;
+  display: inline-block;
+  width: 15px;
+  margin-left: -20px;
+  font-size: 30px;
+  position: relative;
+  top: 4px;
+}
+
+/* navbar media quiery */
+@media screen and (max-width: 786px) {
+  .navbar {
+    flex-direction: column;
+    height: 50px;
+    overflow: hidden;
+  }
+
+  .img_container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .menu_container {
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto;
+  }
+
+  .b1,
+  .b2,
+  .b3 {
+    width: 25px;
+    height: 2px;
+    background: #00a8e2;
+    margin: 5px 0;
+    transition: 0.3s;
+  }
+
+  /* change height on click to show nav buttons */
+  .open {
+    height: 250px;
+    transition: 0.4s;
+  }
+
+  /* rotate top bar */
+  .change .b1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-2px, 3px) ;
+  }
+
+  /* fade out the second bar */
+  .change .b2 {
+    opacity: 0;
+  }
+
+  /* rotate bottom bar */
+  .change .b3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-7px, -8px) ;
+  }
+
+  /* set navbar list flex options */
+  .list {
+    flex-wrap: wrap;
+    width: 80%;
+  }
+
+  /* nav li media query styles */
+  .list>li {
+    flex-basis: 100%;
+    text-align: center;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    background: #00a8e2;
+  }
+
+  /* hover styles for navbar links */
+  .list>li>a:hover {
+    color: #fff;
+    cursor: pointer;
+  }
+
+  /* update navbar link padding */
+  .links>a {
+    padding: 0;
+  }
+
+  /* lease labs logo size */
+  .logo {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 125px;
+  }
+
+  /* remove triangles on mobile */
+  .right_panel:after,
+  .right_panel::after,
+  .left_panel:after,
+  .left_panel::after {
+    display: none;
+  }
+} /* ends media query */
