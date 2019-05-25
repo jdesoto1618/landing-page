@@ -125,12 +125,46 @@ section {
   margin: 5px 0 0 20px;
 }
 
-/* div containing images */
+/* image div flex container */
 .img_container {
   display: flex;
   justify-content: space-evenly;
   margin: 50px 0 20px 0;
   position: relative;
+}
+
+/* background color for image divs */
+.img_div {
+  background: #00a8e2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* set position relative so child items can be positioned */
+  position: relative;
+  color: #fff;
+}
+
+/* positioned absolutely relative to .img_div container element */
+.img_div h3,
+.img_div p {
+  position: absolute;
+  top: 20%;
+  opacity: 0;
+}
+
+/* set p element slightly lower than image header */
+.img_div p {
+  top: 40%;
+}
+
+/* show image description and captions on hover */
+.img_div h3:hover,
+.img_div p:hover {
+  opacity: 1;
+  transition: opacity .20s ease-in-out;
+  -moz-transition: opacity .20s ease-in-out;
+  -webkit-transition: opacity .20s ease-in-out;
 }
 
 /* image styling */
@@ -142,19 +176,13 @@ section {
   object-fit: cover;
 }
 
-/* cursor for image hover */
+/* styles for image hover */
 .imgs:hover {
   cursor: pointer;
-}
-
-/* hover state for image divs */
-.mDiv:hover,
-.wDiv:hover,
-.bDiv:hover {
-  position: relative;
-  z-index: 1;
-  opacity: 0.5;
-  background: #00a8e2;
+  opacity: 0.6;
+  transition: opacity .20s ease-in-out;
+  -moz-transition: opacity .20s ease-in-out;
+  -webkit-transition: opacity .20s ease-in-out;
 }
 
 /* custom bullet styling */
@@ -174,7 +202,7 @@ section {
   top: 4px;
 }
 
-/* navbar media quiery */
+/* navbar media query */
 @media screen and (max-width: 786px) {
   .navbar {
     flex-direction: column;
@@ -272,4 +300,4 @@ section {
   .left_panel::after {
     display: none;
   }
-} /* ends media query */
+} /* ends navbar media query */
