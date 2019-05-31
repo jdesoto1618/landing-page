@@ -1,18 +1,18 @@
 var images = {
   man: {
     heading: 'Man Image',
-    description: 'Image of a man.',
-    path: 'images/man.jpg'
+    description: 'Image of a man',
+    path: '../images/man.jpg'
   },
   wizard: {
     heading: 'Wizard Image',
-    description: 'Image of a wizard.',
-    path: 'images/wizard.jpg'
+    description: 'Image of a wizard',
+    path: '../images/wizard.jpg'
   },
   beast: {
     heading: 'Beast Image',
-    description: 'Image of a beast.',
-    path: 'images/beast.jpg'
+    description: 'Image of a beast',
+    path: '../images/beast.jpg'
   }
 };
 
@@ -20,49 +20,29 @@ var images = {
 var menu = document.getElementsByClassName('menu_container')[0];
 var navbar = document.getElementsByClassName('navbar')[0];
 
-// save picture dom objects to variables
-var man = document.getElementById('man');
-var wizard = document.getElementById('wizard');
-var beast = document.getElementById('beast');
-
-// save picture paths to variables
-var mPic = images.man.path;
-var wPic = images.wizard.path;
-var bPic = images.beast.path;
-
-// save picture headings to variables
-var mHead = images.man.heading;
-var wHead = images.wizard.heading;
-var bHead = images.beast.heading;
-
-// save picture descriptions to variables
-var mCap = images.man.description;
-var wCap = images.wizard.description;
-var bCap = images.beast.description;
-
-// save image id's from dom to variables
-var dude_description = document.getElementById('dude_cap_header');
-var dude_caption = document.getElementById('dude_cap_text');
-var wizard_description = document.getElementById('wiz_cap_header');
-var wizard_caption = document.getElementById('wiz_cap_text');
-var beast_description = document.getElementById('beast_cap_header');
-var beast_caption = document.getElementById('beast_cap_text');
-
 // onclick function for hamburger menu
 menu.onclick = function(){
   menu.classList.toggle('change');
   navbar.classList.toggle('open');
 }
 
-// set image sources
-man.src = '../' + mPic;
-wizard.src = '../' + wPic;
-beast.src = '../' + bPic;
-
-// set image headers and captions from js object
-dude_description.innerHTML = mHead;
-dude_caption.innerHTML = mCap;
-wizard_description.innerHTML = wHead;
-wizard_caption.innerHTML = wCap;
-beast_description.innerHTML = bHead;
-beast_caption.innerHTML = bCap;
+// save container div for images to a var
+var img_container = document.getElementById('img_container');
+// initiate object key variable outside for loop
+var key;
+// loop through object to get the properties needed
+for(key in images) {
+  // save image headings to a variable
+  var heading     = images[key].heading;
+  // save image descriptions to a variable
+  var description = images[key].description;
+  // save image paths to a variable
+  var path        = images[key].path;
+  // create html elements, place object properties there. += supports multiple images
+  img_container.innerHTML +=
+    "<div class='img_div'>" +
+      "<img class='imgs' src=" + path + ">" +
+      "<h3>" + heading + "</h3>" +
+      "<p>" + description + "</p>" +
+    "</div>";
+} // ends for loop
