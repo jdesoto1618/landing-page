@@ -68,18 +68,25 @@ section {
   position: relative;
 }
 
-/* triangle at bottom of subnav section */
-.left_panel:after,
-.left_panel::after {
+/* styles for divs to create two grey triangles */
+.arrow-down {
   position: absolute;
-  top: 7%;
-  left: 70%;
-  content: '';
   width: 0;
   height: 0;
-  border-top: solid 10px #d3d3d3;
-  border-left: solid 15px transparent;
-  border-right: solid 15px transparent;
+  border-left: 7.5px solid transparent;
+  border-right: 7.5px solid transparent;
+  border-top: 7.5px solid #d3d3d3;
+}
+
+/* position triangles individually */
+.t1 {
+  left: 75%;
+  top: 32px;
+}
+
+.t2 {
+  left: 75%;
+  top: 204px;
 }
 
 .left_title {
@@ -98,21 +105,6 @@ section {
   padding-left: 20px;
   margin-right: 20px;
   position: relative;
-}
-
-/* triangle at bottom of related links section */
-.right_panel:after,
-.right_panel::after {
-  position: absolute;
-  top: 48.7%;
-  left: -11%;
-  margin-left: 5px;
-  content: '';
-  width: 0;
-  height: 0;
-  border-top: solid 10px #d3d3d3;
-  border-left: solid 15px transparent;
-  border-right: solid 15px transparent;
 }
 
 .right_title {
@@ -201,6 +193,14 @@ section {
   font-size: 30px;
   position: relative;
   top: 4px;
+}
+
+/* remove triangles on smaller screens */
+@media screen and (max-width: 889px) {
+  .t1,
+  .t2 {
+    display: none;
+  }
 }
 
 /* navbar media query */
@@ -292,13 +292,5 @@ section {
     top: 10px;
     left: 0;
     width: 125px;
-  }
-
-  /* remove triangles on mobile */
-  .right_panel:after,
-  .right_panel::after,
-  .left_panel:after,
-  .left_panel::after {
-    display: none;
   }
 } /* ends navbar media query */
