@@ -19,6 +19,8 @@ var images = {
 // save navbar elements to variables
 var menu = document.getElementsByClassName('menu_container')[0];
 var navbar = document.getElementsByClassName('navbar')[0];
+var paragraph = document.getElementsByTagName('p');
+var length = paragraph.length;
 
 // onclick function for hamburger menu
 menu.onclick = function(){
@@ -30,7 +32,7 @@ menu.onclick = function(){
 var img_container = document.getElementById('img_container');
 // initiate object key variable outside for loop
 var key;
-// loop through object to get the properties needed
+// loop through object to get the properties
 for(key in images) {
   // save image headings to a variable
   var heading     = images[key].heading;
@@ -46,3 +48,8 @@ for(key in images) {
       "<p>" + description + "</p>" +
     "</div>";
 } // ends for loop
+
+// Dynamically add classes to all paragraph tags in the body
+for(var i = 0; i < length; i++) {
+  paragraph[i].classList.add('copy_para');
+}
