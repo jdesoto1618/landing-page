@@ -33,16 +33,25 @@ html, body {
   border-bottom: 2px solid #d3d3d3;
 }
 
-/* style list items in navbar */
+/* style ul's in navbar */
 .list {
   display: flex;
   list-style-type: none;
   padding: 0;
+  margin: 0;
+}
+
+/* styles for navbar li's */
+.links {
+  padding: 5px 10px;
+}
+
+.links:hover {
+  cursor: pointer;
 }
 
 /* styles for navbar links */
 .links>a {
-  padding-right: 75px;
   text-decoration: none;
   text-transform: uppercase;
   font-size: 12px;
@@ -51,7 +60,31 @@ html, body {
 
 /* hover styles for navbar links */
 .links>a:hover {
-  color: #00a8e2;
+}
+
+/* styles for nav-links div */
+.nav-links {
+  margin-top: 5px;
+  text-align: center;
+}
+
+/* styles for wrapper divs around each nav li */
+.nav-li {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  background: #00a8e2;
+  border-radius: 6px;
+}
+
+.nav-li:last-child {
+  margin: 0;
+}
+
+.nav-li:hover {
+  background: #00a8e2;
   cursor: pointer;
 }
 
@@ -68,25 +101,23 @@ section {
   position: relative;
 }
 
-/* styles for divs to create two grey triangles */
-.arrow-down {
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 7.5px solid transparent;
-  border-right: 7.5px solid transparent;
-  border-top: 7.5px solid #d3d3d3;
+.left_link,
+.copy_para {
+  font-size: 14px;
 }
 
-/* position triangles individually */
-.t1 {
-  left: 75%;
-  top: 32px;
+.left_link {
+  text-decoration: none;
+  color: #000;
 }
 
-.t2 {
-  left: 75%;
-  top: 204px;
+.left_link:hover {
+  color: #00a8e2;
+}
+
+h5 {
+  white-space: nowrap;
+  font-size: 12px;
 }
 
 .left_title {
@@ -118,6 +149,10 @@ section {
   margin: 5px 0 0 20px;
 }
 
+.copy_para {
+  margin-right: 50px;
+}
+
 /* image div flex container */
 .img_container {
   display: flex;
@@ -136,28 +171,31 @@ section {
   /* set position relative so child items can be positioned absolutely */
   position: relative;
   color: #fff;
+  margin-bottom: 10px;
 }
 
 /* positioned absolutely relative to .img_div container element */
+/* hide the captions and descriptions by setting opacity to 0 */
 .img_div h3,
 .img_div p {
   position: absolute;
   top: 20%;
   opacity: 0;
+  transition: all .20s ease-in-out;
+  -moz-transition: all .20s ease-in-out;
+  -webkit-transition: all .20s ease-in-out;
+}
+
+/* show image description and captions on hover */
+/* show the captions and descriptions on hover of the div */
+.img_div:hover h3,
+.img_div:hover p {
+  opacity: 1;
 }
 
 /* set p element slightly lower than image header */
 .img_div p {
   top: 40%;
-}
-
-/* show image description and captions on hover */
-.img_div:hover h3,
-.img_div:hover p {
-  opacity: 1;
-  transition: opacity .20s ease-in-out;
-  -moz-transition: opacity .20s ease-in-out;
-  -webkit-transition: opacity .20s ease-in-out;
 }
 
 /* image styling */
@@ -167,15 +205,15 @@ section {
   border: 1px solid #00a8e2;
   display: flex;
   object-fit: cover;
-}
-
-/* styles for image hover */
-.imgs:hover {
-  cursor: pointer;
-  opacity: 0.6;
   transition: opacity .20s ease-in-out;
   -moz-transition: opacity .20s ease-in-out;
   -webkit-transition: opacity .20s ease-in-out;
+}
+
+/* image hover styles */
+.imgs:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
 
 /* custom bullet styling */
@@ -192,15 +230,12 @@ section {
   margin-left: -20px;
   font-size: 30px;
   position: relative;
-  top: 4px;
+  top: 4.5px;
 }
 
-/* remove triangles on smaller screens */
-@media screen and (max-width: 889px) {
-  .t1,
-  .t2 {
-    display: none;
-  }
+.t1,
+.t2 {
+  display: none;
 }
 
 /* navbar media query */
@@ -236,7 +271,7 @@ section {
 
   /* change height on click to show nav buttons */
   .open {
-    height: 250px;
+    height: 240px;
     transition: 0.4s;
   }
 
@@ -260,7 +295,7 @@ section {
   /* set navbar list flex options */
   .list {
     flex-wrap: wrap;
-    width: 80%;
+    justify-content: center;
   }
 
   /* nav li media query styles */
@@ -282,7 +317,6 @@ section {
   /* update navbar link padding */
   .links>a {
     padding: 0;
-    color: #fff;
     font-size: 14px;
   }
 
@@ -294,3 +328,70 @@ section {
     width: 125px;
   }
 } /* ends navbar media query */
+
+
+/* show triangles for large and up [1024px+] */
+@media screen and (min-width: 64em) {
+  /* styles for divs to create two grey triangles */
+  .arrow-down {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 7.5px solid transparent;
+    border-right: 7.5px solid transparent;
+    border-top: 7.5px solid #d3d3d3;
+  }
+
+  .t1,
+  .t2 {
+     display: block;
+   }
+
+   /* position triangles individually */
+   .t1 {
+     left: 75%;
+     top: 34px;
+   }
+
+   .t2 {
+     left: 75%;
+     top: 207px;
+   }
+
+   .nav-links {
+     margin-top: 0;
+   }
+
+   .nav-li {
+     height: 60px;
+     width: 85px;
+     border-radius: 0;
+     background: #fff;
+     margin-bottom: 0;
+   }
+
+   .nav-li:hover {
+     background: #00a8e2;
+   }
+
+   .links > a {
+     color: #000;
+   }
+
+   .links > a:hover {
+     color: #fff;
+   }
+
+   h5 {
+     font-size: 14px;
+   }
+
+   .left_link,
+   .copy_para {
+     font-size: 16px;
+   }
+
+   .img_div {
+     margin-bottom: 0;
+   }
+}
